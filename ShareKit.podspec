@@ -39,13 +39,13 @@ Pod::Spec.new do |s|
     reachability.requires_arc = false
   end
 
-  s.subspec 'Evernote' do |evernote|
-    evernote.source_files = 'Classes/ShareKit/Sharers/Services/Evernote/**/*.{h,m}'
-    evernote.dependency 'Evernote-SDK-iOS', '~> 1.3.1'
-    evernote.dependency 'ShareKit/Core'
-    evernote.libraries = 'xml2'
-    evernote.xcconfig = { 'HEADER_SEARCH_PATHS' => '$(SDKROOT)/usr/include/libxml2' }
-  end
+  #s.subspec 'Evernote' do |evernote|
+    #evernote.source_files = 'Classes/ShareKit/Sharers/Services/Evernote/**/*.{h,m}'
+    #evernote.dependency 'Evernote-SDK-iOS', '~> 1.3.1'
+    #evernote.dependency 'ShareKit/Core'
+    #evernote.libraries = 'xml2'
+    #evernote.xcconfig = { 'HEADER_SEARCH_PATHS' => '$(SDKROOT)/usr/include/libxml2' }
+  #end
 
   s.subspec 'Facebook' do |facebook|
     facebook.source_files   = 'Classes/ShareKit/Sharers/Services/Facebook/**/*.{h,m}'
@@ -107,25 +107,25 @@ Pod::Spec.new do |s|
     instapaper.dependency 'ShareKit/Core'
   end
 
-  s.subspec 'LinkedIn' do |linkedin|
-    linkedin.source_files = 'Classes/ShareKit/Sharers/Services/LinkedIn/**/*.{h,m}'
-    linkedin.dependency 'ShareKit/Core'
-  end
+  #s.subspec 'LinkedIn' do |linkedin|
+    #linkedin.source_files = 'Classes/ShareKit/Sharers/Services/LinkedIn/**/*.{h,m}'
+    #linkedin.dependency 'ShareKit/Core'
+  #end
 
   s.subspec 'Pinboard' do |pinboard|
     pinboard.source_files = 'Classes/ShareKit/Sharers/Services/Pinboard/**/*.{h,m}'
     pinboard.dependency 'ShareKit/Core'
   end
 
-  s.subspec 'Readability' do |readability|
-    readability.source_files = 'Classes/ShareKit/Sharers/Services/Readability/**/*.{h,m}'
-    readability.dependency 'ShareKit/Core'
-  end
+  #s.subspec 'Readability' do |readability|
+    #readability.source_files = 'Classes/ShareKit/Sharers/Services/Readability/**/*.{h,m}'
+    #readability.dependency 'ShareKit/Core'
+  #end
 
-  s.subspec 'ReadItLater' do |readitlater|
-    readitlater.source_files = 'Classes/ShareKit/Sharers/Services/Read It Later/**/*.{h,m}'
-    readitlater.dependency 'ShareKit/Core'
-  end
+  #s.subspec 'ReadItLater' do |readitlater|
+    #readitlater.source_files = 'Classes/ShareKit/Sharers/Services/Read It Later/**/*.{h,m}'
+    #readitlater.dependency 'ShareKit/Core'
+  #end
 
   s.subspec 'Tumblr' do |tumblr|
     tumblr.source_files = 'Classes/ShareKit/Sharers/Services/Tumblr/**/*.{h,m}'
@@ -144,10 +144,10 @@ Pod::Spec.new do |s|
     sinaweibo.framework = 'Social'
   end
 
-  s.subspec 'Vkontakte' do |vkontakte|
-    vkontakte.source_files = 'Classes/ShareKit/Sharers/Services/Vkontakte/**/*.{h,m}'
-    vkontakte.dependency 'ShareKit/Core'
-  end
+  #s.subspec 'Vkontakte' do |vkontakte|
+    #vkontakte.source_files = 'Classes/ShareKit/Sharers/Services/Vkontakte/**/*.{h,m}'
+    #vkontakte.dependency 'ShareKit/Core'
+  #end
 
   s.subspec 'Instagram' do |instagram|
     instagram.source_files = 'Classes/ShareKit/Sharers/Services/Instagram/**/*.{h,m}'
@@ -165,28 +165,28 @@ Pod::Spec.new do |s|
     pinterest.dependency 'ShareKit/Core'
   end
 
-  s.subspec 'OneNote' do |onenote|
-    onenote.source_files = 'Classes/ShareKit/Sharers/Services/OneNote/**/*.{h,m}'
-    onenote.dependency 'ShareKit/Core'
-    onenote.vendored_frameworks = 'Frameworks/LiveSDK.framework'
-    onenote.resource = 'Frameworks/LiveSDK.framework'
-  end
+  #s.subspec 'OneNote' do |onenote|
+    #onenote.source_files = 'Classes/ShareKit/Sharers/Services/OneNote/**/*.{h,m}'
+    #onenote.dependency 'ShareKit/Core'
+    #onenote.vendored_frameworks = 'Frameworks/LiveSDK.framework'
+    #onenote.resource = 'Frameworks/LiveSDK.framework'
+  #end
 
-  s.subspec 'ReadingList' do |readinglist|
-    readinglist.source_files = 'Classes/ShareKit/Sharers/Actions/Add to Safari Reading List/**/*.{h,m}'
-    readinglist.dependency 'ShareKit/Core'
-    readinglist.weak_frameworks    = 'SafariServices'
-  end
+  #s.subspec 'ReadingList' do |readinglist|
+    #readinglist.source_files = 'Classes/ShareKit/Sharers/Actions/Add to Safari Reading List/**/*.{h,m}'
+    #readinglist.dependency 'ShareKit/Core'
+    #readinglist.weak_frameworks    = 'SafariServices'
+  #end
 
-  s.subspec 'Open in Google Chrome' do |openinchrome|
-    openinchrome.source_files = 'Classes/ShareKit/Sharers/Actions/Open in Chrome/**/*.{h,m}'
-    openinchrome.dependency 'ShareKit/Core'
-  end
+  #s.subspec 'Open in Google Chrome' do |openinchrome|
+    #openinchrome.source_files = 'Classes/ShareKit/Sharers/Actions/Open in Chrome/**/*.{h,m}'
+    #openinchrome.dependency 'ShareKit/Core'
+  #end
 
-  s.subspec 'Open in 1Password' do |onepassword|
-    onepassword.source_files = 'Classes/ShareKit/Sharers/Actions/Add to 1Password/**/*.{h,m}'
-    onepassword.dependency 'ShareKit/Core'
-  end
+  #s.subspec 'Open in 1Password' do |onepassword|
+    #onepassword.source_files = 'Classes/ShareKit/Sharers/Actions/Add to 1Password/**/*.{h,m}'
+    #onepassword.dependency 'ShareKit/Core'
+  #end
 
   #s.subspec 'GooglePlus' do |googleplus|
     #googleplus.source_files = 'Classes/ShareKit/Sharers/Services/Google Plus/**/*.{h,m}', 'Frameworks/GoogleOpenSource.framework/Versions/A/Headers/*.h'
