@@ -28,7 +28,7 @@
 #import "SHKRequest.h"
 #import "Debug.h"
 
-#define SHK_TIMEOUT 90
+#define SHK_TIMEOUT MAXFLOAT //no timeout
 
 @interface SHKRequest ()
 
