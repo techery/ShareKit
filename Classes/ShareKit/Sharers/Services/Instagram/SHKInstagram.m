@@ -61,6 +61,11 @@
     return YES;
 }
 
++ (BOOL)canShareFile:(SHKFile *)file{
+
+    return [self isValidFile:file];
+}
+
 + (BOOL)shareRequiresInternetConnection
 {
 	return NO;
@@ -113,16 +118,20 @@
 	//clear it out and make it fresh
 	[[NSFileManager defaultManager] removeItemAtPath:docPath error:nil];
 	if ([[NSFileManager defaultManager] createDirectoryAtPath:dirPath withIntermediateDirectories:YES attributes:nil error:nil]) {
-		UIImage* tmpImg = self.item.image;
+        NSData* imgData;
+        if (self.item.file) {
+            imgData = self.item.file.data;
+        } else {
+            UIImage* tmpImg = self.item.image;
         
-        if(tmpImg.size.width != tmpImg.size.height && [SHKCONFIG(instagramLetterBoxImages) boolValue]){
-            float size = tmpImg.size.width > tmpImg.size.height ? tmpImg.size.width : tmpImg.size.height;
-            CGFloat maxPhotoSize = [self maxPhotoSize];
-            if(size > maxPhotoSize) size = maxPhotoSize;
-            tmpImg = [self imageByScalingImage:tmpImg proportionallyToSize:CGSizeMake(size,size)];
+            if(tmpImg.size.width != tmpImg.size.height && [SHKCONFIG(instagramLetterBoxImages) boolValue]){
+                float size = tmpImg.size.width > tmpImg.size.height ? tmpImg.size.width : tmpImg.size.height;
+                CGFloat maxPhotoSize = [self maxPhotoSize];
+                if(size > maxPhotoSize) size = maxPhotoSize;
+                tmpImg = [self imageByScalingImage:tmpImg proportionallyToSize:CGSizeMake(size,size)];
+            }
+            imgData = [self generateImageData:tmpImg];
         }
-		
-		NSData* imgData = [self generateImageData:tmpImg];
 		[[NSFileManager defaultManager] createFileAtPath:docPath contents:imgData attributes:nil];
 		NSURL* url = [NSURL fileURLWithPath:docPath isDirectory:NO ];
 		self.dic = [UIDocumentInteractionController interactionControllerWithURL:url];
@@ -242,5 +251,16 @@
 }
 - (void) documentInteractionController: (UIDocumentInteractionController *) controller willBeginSendingToApplication: (NSString *) application{
 	self.didSend = true;
+}
+
++ (BOOL)isValidFile:(SHKFile *)file {
+    NSArray *youTubeValidTypes = @[@"mov",@"m4v",@"mpeg4",@"mp4",@"avi",@"wmv",@"mpegps",@"flv",@"3gpp",@"webm"];
+    
+    for (NSString *extension in youTubeValidTypes) {
+        if ([file.filename hasSuffix:extension]) {
+            return YES;
+        }
+    }
+    return NO;
 }
 @end
