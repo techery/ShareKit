@@ -1041,18 +1041,21 @@ static NSString *const kSHKStoredShareInfoKey=@"kSHKStoredShareInfo";
 }
 
 - (void)hideActivityIndicator {
-    
-    [self.shareDelegate hideActivityIndicatorForSharer:self];
+    if ([self.shareDelegate respondsToSelector:@selector(hideActivityIndicatorForSharer:)]) {
+        [self.shareDelegate hideActivityIndicatorForSharer:self];
+    }
 }
 
 - (void)displayActivity:(NSString *)activityDescription {
-    
-    [self.shareDelegate displayActivity:activityDescription forSharer:self];
+    if ([self.shareDelegate respondsToSelector:@selector(displayActivity:forSharer:)]) {
+        [self.shareDelegate displayActivity:activityDescription forSharer:self];
+    }
 }
 
 - (void)displayCompleted:(NSString *)completionText {
-    
-    [self.shareDelegate displayCompleted:completionText forSharer:self];
+    if ([self.shareDelegate respondsToSelector:@selector(displayCompleted:forSharer:)]) {
+        [self.shareDelegate displayCompleted:completionText forSharer:self];
+    }
 }
 
 #pragma mark - SHKSessionDelegate
@@ -1073,7 +1076,9 @@ static NSString *const kSHKStoredShareInfoKey=@"kSHKStoredShareInfo";
     self.uploadInfo.bytesUploaded = uploadedBytes;
     
     [[NSNotificationCenter defaultCenter] postNotificationName:SHKUploadProgressNotification object:self userInfo:@{SHKUploadProgressInfoKeyName: self.uploadInfo}];
-    [self.shareDelegate showProgress:[self.uploadInfo uploadProgress] forSharer:self];
+    if ([self.shareDelegate respondsToSelector:@selector(showProgress:forSharer:)]) {
+        [self.shareDelegate showProgress:[self.uploadInfo uploadProgress] forSharer:self];
+    }
 }
 
 @end
