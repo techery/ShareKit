@@ -27,12 +27,12 @@ Pod::Spec.new do |s|
     core.dependency 'UIActivityIndicator-for-SDWebImage', '~> 1.2'
   end
 
-  s.subspec 'NoARC' do |noarc|
-    noarc.dependency 'PKMultipartInputStream'
-    noarc.requires_arc = false
-    noarc.source_files = non_arc_files
-    noarc.dependency 'ShareKit/Core'
-  end
+  #s.subspec 'NoARC' do |noarc|
+    #noarc.dependency 'PKMultipartInputStream'
+    #noarc.requires_arc = false
+    #noarc.source_files = non_arc_files
+    #noarc.dependency 'ShareKit/Core'
+  #end
 
   s.subspec 'Reachability' do |reachability|
     reachability.source_files = 'Classes/ShareKit/Reachability/**/*.{h,m}'
