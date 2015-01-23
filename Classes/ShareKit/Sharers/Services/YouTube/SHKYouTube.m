@@ -169,9 +169,10 @@ NSString *const kKeychainItemName = @"ShareKit: YouTube";
 
 - (void)authorizationCanceled:(id)sender
 {
-    GTMOAuth2ViewControllerTouch *controller = self.viewControllers[0];
-    [controller cancelSigningIn];
-    
+    if (self.viewControllers.count > 0) {
+    	GTMOAuth2ViewControllerTouch *controller = self.viewControllers[0];
+    	[controller cancelSigningIn];
+    }
     [[SHK currentHelper] hideCurrentViewControllerAnimated:YES];
     [self authDidFinish:NO];
     [[SHK currentHelper] removeSharerReference:self];
