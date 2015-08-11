@@ -83,7 +83,7 @@ Pod::Spec.new do |s|
   s.subspec 'Dropbox' do |dropbox|
     dropbox.source_files = 'Classes/ShareKit/Sharers/Services/Dropbox/**/*.{h,m}'
     dropbox.dependency 'ShareKit/Core'
-    dropbox.dependency 'Dropbox-iOS-SDK', '~> 1.3.11'
+    dropbox.dependency 'Dropbox-iOS-SDK', '~> 1.4'
   end
 
   s.subspec 'Instapaper' do |instapaper|
