@@ -123,12 +123,6 @@ Pod::Spec.new do |s|
     imgur.dependency 'ShareKit/Core'
   end
 
-  s.subspec 'Pinterest' do |pinterest|
-    pinterest.source_files = 'Classes/ShareKit/Sharers/Services/Pinterest/**/*.{h,m}'
-    pinterest.dependency 'Pinterest-iOS', '~> 2.3'
-    pinterest.dependency 'ShareKit/Core'
-  end
-
   s.subspec 'YouTube' do |youtube|
     youtube.source_files = 'Classes/ShareKit/Sharers/Services/YouTube/**/*.{h,m}'
     youtube.dependency 'ShareKit/Core'
